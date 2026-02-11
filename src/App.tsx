@@ -4,14 +4,12 @@ import { useState } from "react";
 export default function Page() {
   const [noCount, setNoCount] = useState(0);
   const [yesPressed, setYesPressed] = useState(false);
- 
 
   const yesButtonSize = noCount * 20 + 16;
 
   const handleNoClick = () => {
     setNoCount(noCount + 1);
   };
-
 
   const getNoButtonText = () => {
     const phrases = [
@@ -35,7 +33,6 @@ export default function Page() {
       "https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif",
       "https://tenor.com/es/view/bubu-dudu-sseeyall-gif-1555753298461515374.gif",
       "https://tenor.com/es/view/mocha-cry-gif-4822939937925547997.gif",
-    
     ];
     if (noCount === 0) return images[0];
     if (noCount === 1) return images[1];
@@ -52,7 +49,9 @@ export default function Page() {
         </div>
       ) : (
         <>
-          <h1 className="my-4 text-4xl text-center">¿Quieres ser mi Valentín?</h1>
+          <h1 className="my-4 text-4xl text-center">
+            ¿Quieres ser mi Valentín?
+          </h1>
           <div className="flex items-center relative">
             <button
               className="mr-4 rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700 transition-all"
@@ -64,10 +63,10 @@ export default function Page() {
 
             <button
               onClick={handleNoClick}
-              className="absolute rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700 transition-all"
-            
+              className="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700 transition-all"
             >
-              {getNoButtonText()}
+              {" "}
+              {getNoButtonText()}{" "}
             </button>
           </div>
         </>
