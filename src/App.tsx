@@ -11,36 +11,37 @@ export default function Page() {
     setNoCount(noCount + 1);
   };
 
+  // Texto del botón "No" en español
   const getNoButtonText = () => {
     const phrases = [
       "No",
-      "Seguro?",
+      "¿Seguro?",
       "Por favor, cosita",
       "Y si te regalo un golden?",
-      "Bubu di que si",
-      "Y si te regalo la switch?",
+      "Bubu, di que sí",
+      "Y si te regalo la Switch?",
       ":(((",
-      "MUY MAL COSITA",
+      "¡¡MUY MAL, COSITA!!",
     ];
 
     return phrases[Math.min(noCount, phrases.length - 1)];
   };
 
+  // GIFs progresivos según los clics en "No"
   const getImage = () => {
     if (yesPressed) {
       return "https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif";
     }
 
     const images = [
-      "https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif",
+      "https://media.tenor.com/6I-WN5y4l5sAAAAC/bear-roses.gif", // primer click
+       "https://tenor.com/es/view/bubu-dudu-sseeyall-gif-1555753298461515374.gif",
       "https://tenor.com/es/view/mocha-cry-gif-4822939937925547997.gif",
-      "https://tenor.com/es/view/bubu-dudu-sseeyall-gif-1555753298461515374.gif",
     ];
 
-     // Mostrar los dos últimos GIFs al subir noCount
-      if (noCount === 0) return images[0];
-      if (noCount === 1) return images[1];
-      return images[2]; // si noCount >= 2
+    if (noCount === 0) return images[0];
+    if (noCount === 1) return images[1];
+    return images[2];
   };
 
   return (
@@ -48,12 +49,12 @@ export default function Page() {
       <img className="h-[200px]" src={getImage()} alt="bear" />
 
       {yesPressed ? (
-        <div className="my-4 text-4xl font-bold">
-          WOOOOOO!!! I love you pookie!! ;))
+        <div className="my-4 text-4xl font-bold text-center">
+          ¡WOOOOOO! ¡Te amo, cosita linda! 😍
         </div>
       ) : (
         <>
-          <h1 className="my-4 text-4xl">Will you be my Valentine?</h1>
+          <h1 className="my-4 text-4xl text-center">¿Quieres ser mi Valentín?</h1>
 
           <div className="flex items-center">
             <button
@@ -61,7 +62,7 @@ export default function Page() {
               style={{ fontSize: yesButtonSize }}
               onClick={() => setYesPressed(true)}
             >
-              Yes
+              Sí
             </button>
 
             <button
