@@ -39,7 +39,7 @@ export default function Page() {
     }
     const images = [
       "https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif",
-         "https://tenor.com/es/view/bubu-dudu-sseeyall-gif-1555753298461515374.gif",
+      "https://tenor.com/es/view/bubu-dudu-sseeyall-gif-1555753298461515374.gif",
       "https://tenor.com/es/view/mocha-cry-gif-4822939937925547997.gif",
     
     ];
@@ -54,7 +54,7 @@ export default function Page() {
 
       {yesPressed ? (
         <div className="my-4 text-4xl font-bold text-center">
-          ¡WOOOOOO! ¡Te amo, cosita linda! 😍
+          Te quiero mucho cosita 🫶🏼
         </div>
       ) : (
         <>
