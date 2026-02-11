@@ -14,13 +14,13 @@ export default function Page() {
   const getNoButtonText = () => {
     const phrases = [
       "No",
-      "Are you sure?",
-      "What if I asked really nicely?",
-      "Pretty please",
-      "PLEASE POOKIE",
-      "Estoy llorando",
-      "Última oportunidad",
-      "No :(",
+      "Seguro?",
+      "Por favor, cosita",
+      "Y si te regalo un golden?",
+      "Bubu di que si",
+      "Y si te regalo la switch?",
+      ":(((",
+      "MUY MAL COSITA",
     ];
 
     return phrases[Math.min(noCount, phrases.length - 1)];
@@ -37,7 +37,10 @@ export default function Page() {
       "https://tenor.com/es/view/bubu-dudu-sseeyall-gif-1555753298461515374.gif",
     ];
 
-    return images[Math.min(noCount, images.length - 1)];
+     // Mostrar los dos últimos GIFs al subir noCount
+      if (noCount === 0) return images[0];
+      if (noCount === 1) return images[1];
+      return images[2]; // si noCount >= 2
   };
 
   return (
