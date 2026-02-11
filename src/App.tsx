@@ -4,6 +4,7 @@ import { useState } from "react";
 export default function Page() {
   const [noCount, setNoCount] = useState(0);
   const [yesPressed, setYesPressed] = useState(false);
+  const [noButtonPosition, setNoButtonPosition] = useState({ top: 0, left: 0 });
 
   const yesButtonSize = noCount * 20 + 16;
 
@@ -11,7 +12,13 @@ export default function Page() {
     setNoCount(noCount + 1);
   };
 
-  // Texto del botón "No" en español
+  const handleNoHover = () => {
+    // Hace que el botón "No" se mueva aleatoriamente al pasar el ratón
+    const newTop = Math.floor(Math.random() * 200) - 100; // +-100px vertical
+    const newLeft = Math.floor(Math.random() * 200) - 100; // +-100px horizontal
+    setNoButtonPosition({ top: newTop, left: newLeft });
+  };
+
   const getNoButtonText = () => {
     const phrases = [
       "No",
@@ -23,29 +30,26 @@ export default function Page() {
       ":(((",
       "¡¡MUY MAL, COSITA!!",
     ];
-
     return phrases[Math.min(noCount, phrases.length - 1)];
   };
 
-  // GIFs progresivos según los clics en "No"
   const getImage = () => {
     if (yesPressed) {
       return "https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif";
     }
-
     const images = [
-      "https://media.tenor.com/6I-WN5y4l5sAAAAC/bear-roses.gif", // primer click
-       "https://tenor.com/es/view/bubu-dudu-sseeyall-gif-1555753298461515374.gif",
+      "https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif",
+         "https://tenor.com/es/view/bubu-dudu-sseeyall-gif-1555753298461515374.gif",
       "https://tenor.com/es/view/mocha-cry-gif-4822939937925547997.gif",
+    
     ];
-
     if (noCount === 0) return images[0];
     if (noCount === 1) return images[1];
     return images[2];
   };
 
   return (
-    <div className="-mt-16 flex h-screen flex-col items-center justify-center">
+    <div className="relative -mt-16 flex h-screen flex-col items-center justify-center">
       <img className="h-[200px]" src={getImage()} alt="bear" />
 
       {yesPressed ? (
@@ -55,8 +59,7 @@ export default function Page() {
       ) : (
         <>
           <h1 className="my-4 text-4xl text-center">¿Quieres ser mi Valentín?</h1>
-
-          <div className="flex items-center">
+          <div className="flex items-center relative">
             <button
               className="mr-4 rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700 transition-all"
               style={{ fontSize: yesButtonSize }}
@@ -67,7 +70,12 @@ export default function Page() {
 
             <button
               onClick={handleNoClick}
-              className="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700 transition-all"
+              onMouseEnter={handleNoHover}
+              className="absolute rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700 transition-all"
+              style={{
+                top: noButtonPosition.top,
+                left: noButtonPosition.left,
+              }}
             >
               {getNoButtonText()}
             </button>
