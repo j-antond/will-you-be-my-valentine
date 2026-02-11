@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function Page() {
   const [noCount, setNoCount] = useState(0);
   const [yesPressed, setYesPressed] = useState(false);
-  const [noButtonPosition, setNoButtonPosition] = useState({ top: 0, left: 0 });
+ 
 
   const yesButtonSize = noCount * 20 + 16;
 
@@ -12,12 +12,6 @@ export default function Page() {
     setNoCount(noCount + 1);
   };
 
-  const handleNoHover = () => {
-    // Hace que el botón "No" se mueva aleatoriamente al pasar el ratón
-    const newTop = Math.floor(Math.random() * 200) - 100; // +-100px vertical
-    const newLeft = Math.floor(Math.random() * 200) - 100; // +-100px horizontal
-    setNoButtonPosition({ top: newTop, left: newLeft });
-  };
 
   const getNoButtonText = () => {
     const phrases = [
@@ -70,7 +64,6 @@ export default function Page() {
 
             <button
               onClick={handleNoClick}
-              onMouseEnter={handleNoHover}
               className="absolute rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700 transition-all"
               style={{
                 top: noButtonPosition.top,
