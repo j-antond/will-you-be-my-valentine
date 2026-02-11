@@ -41,8 +41,8 @@ export default function Page() {
     ];
 
      // Mostrar los dos últimos GIFs al subir noCount
-      if (noCount === 2) return images[0];
-      if (noCount === 4) return images[1];
+      if (noCount <= 2) return images[0];
+      if (noCount > 2 && noCount <= 4) return images[1];
       return images[2]; // si noCount >= 2
   };
 
