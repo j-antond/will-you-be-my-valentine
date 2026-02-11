@@ -20,6 +20,8 @@ export default function Page() {
       "Bubu di que si",
       "Y si te regalo la switch?",
       ":(((",
+      "Vamos a por una hamburguesita?",
+      "Tristeza",
       "MUY MAL COSITA",
     ];
 
